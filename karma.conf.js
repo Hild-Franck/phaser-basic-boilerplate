@@ -30,6 +30,7 @@ module.exports = function(config) {
       'karma-spec-reporter',
       'karma-phantomjs-launcher',
       'karma-webpack',
+      'karma-coverage',
       require('./babel')
     ],
 
@@ -38,7 +39,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'test/**/*.js': ['babel'],
-      'src/*.js': ['webpack']
+      'src/*.js': ['webpack', 'coverage']
     },
 
 
@@ -58,7 +59,13 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec'],
+    reporters: ['spec', 'coverage'],
+
+    coverageReporter: {
+		  type: 'lcovonly',
+		  dir: 'coverage/',
+		  subdir: '.'
+		},
 
 
     // web server port
