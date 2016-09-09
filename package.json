@@ -4,7 +4,7 @@
   "description": "An useful phaser boilerplate",
   "main": "main.js",
   "scripts": {
-    "test": "node ./node_modules/karma/bin/karma start"
+    "test": "node ./node_modules/karma/bin/karma start --singleRun"
   },
   "repository": {
     "type": "git",
