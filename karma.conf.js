@@ -1,3 +1,4 @@
+var istanbul = require('browserify-istanbul');
 var webpackConfig = require('./webpack.config.js');
 webpackConfig.entry = {};
 
@@ -5,17 +6,17 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '.',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['browserify', 'jasmine'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      { pattern: 'src/**/*.js', watched: true },
-      { pattern: 'test/*.js', watched: true }
+      { pattern: 'test/*.js', watched: true },
+      { pattern: 'src/**/*.js', watched: true, included: true },
     ],
 
 
@@ -30,6 +31,8 @@ module.exports = function(config) {
       'karma-phantomjs-launcher',
       'karma-webpack',
       'karma-coverage',
+      'karma-jshint-preprocessor',
+      'karma-browserify',
       require('./babel')
     ],
 
@@ -37,8 +40,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/**/*.js': ['babel'],
-      'src/*.js': ['webpack', 'coverage']
+      'test/**/*.js': ['browserify'],
+      'src/**/*.js': ['browserify', 'coverage']
     },
 
 
@@ -48,12 +51,6 @@ module.exports = function(config) {
       }
     },
 
-    webpack: webpackConfig,
-
-    webpackMiddleware: {
-    	noInfo: true
-    },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -61,10 +58,21 @@ module.exports = function(config) {
     reporters: ['spec', 'coverage'],
 
     coverageReporter: {
-		  type: 'lcovonly',
-		  dir: 'coverage/',
-		  subdir: '.'
+      reporters: [
+        { type: 'lcovonly', dir: 'coverage/', subdir: '.' },
+        { type: 'text-summary' }        
+      ]
 		},
+
+    browserify: {
+      debug: true,
+      transform: [
+        [ 'babelify', {presets: ['es2015']} ],
+        istanbul({
+          ignore: ['**/node_modules/**', '**/test/**']
+        })
+      ]
+    },
 
 
     // web server port
