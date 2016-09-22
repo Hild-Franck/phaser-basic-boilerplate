@@ -1,4 +1,4 @@
-const gamePreload = require('./preload')
-const gameCreate = require('./create')
+const preload = require('./preload')
+const create = require('./create')
 
-module.exports = { gameCreate, gamePreload }
+module.exports = { create, preload }
