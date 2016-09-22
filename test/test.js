@@ -13,7 +13,6 @@ describe('Stages', () => {
 describe('Game', () => {
 	it('should be true', () => {
 		expect(gameConfig.length).toEqual(5)
-		console.log(gameConfig)
 		expect(game.constructor.name).toEqual('')
 	})
 })
