@@ -41,5 +41,9 @@
     "watchify": "^3.7.0",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1"
+  },
+  "dependencies": {
+    "lodash": "^4.16.1",
+    "phaser": "^2.6.2"
   }
 }

@@ -1,16 +1,19 @@
-const poulet = require('../src/test.js')
+const { isArray, clone } = require('lodash')
 
-describe('TEST TA MERE', function() {
-	it('EST SENSE BE DEFINED', function() {
-		expect(poulet).toBeDefined()
-	})
-	it('EST SENSE BE MARCHE PITIE', function() {
-		expect(poulet(1)).toEqual('Un')
-	})
-	it('EST SENSE BE JESAISPASQUOI', function() {
-		expect(poulet(2)).toEqual('Deux')
-	})
-	it('marche enfin quoi...', function() {
-		expect(poulet()).toEqual('Prout')
+const { game, gameConfig } = require('../src/main.js')
+const stages = require('../src/stages')
+
+describe('Stages', () => {
+	it('should all be functions', () => {
+		expect(stages.gamePreload()).toBeUndefined()
+		expect(stages.gameCreate()).toBeUndefined()
 	})
 })
+
+describe('Game', () => {
+	it('should be true', () => {
+		expect(gameConfig.length).toEqual(5)
+		expect(game.constructor.name).toEqual('')
+	})
+})
+
