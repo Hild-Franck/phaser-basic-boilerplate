@@ -1,6 +1,6 @@
 /**
  * Phaser configuration
- * @module ./gameConfig
+ * @module ./gameConfig.js
 **/
 
 const { map } = require('lodash')

@@ -16,9 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'node_modules/phaser/build/phaser.js',
-      { pattern: 'test/*.js', watched: true },
-      //{ pattern: 'src/main.js', watched: true, included: true },
-      { pattern: 'src/test.js', watched: true, included: true },
+      { pattern: 'test/*.js', watched: true }
     ],
 
 
@@ -52,7 +50,6 @@ module.exports = function(config) {
         presets: ['es2015']
       }
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
