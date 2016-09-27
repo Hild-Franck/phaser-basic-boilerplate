@@ -16,7 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'node_modules/phaser/build/phaser.js',
-      { pattern: 'test/*.js', watched: true },
+      { pattern: 'test/**/*.js', watched: true },
       { pattern: 'src/**/*.js', watched: true, included: false }
     ],
 
@@ -60,7 +60,7 @@ module.exports = function(config) {
     coverageReporter: {
       reporters: [
         { type: 'lcovonly', dir: 'coverage/', subdir: '.' },
-        { type: 'text-summary' }        
+        { type: 'text' }
       ]
 		},
 
