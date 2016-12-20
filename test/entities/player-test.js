@@ -13,24 +13,25 @@ const sprite = {
 	}
 }
 
-const speed = { x: 5, y: 3 }
+const speed = { x: 0, y: 0 }
 
 describe('Player', () => {
-	let player = initPlayer()
+	const player = initPlayer()
 	it('should not have a sprite anchor', () => {
 		expect(player.sprite).toBeUndefined()
 	})
-	let playerWithSprite = initPlayer(sprite, 1, 1, 5, 180)
+	const playerWithSpriteMoved = initPlayer(sprite, 1, 1, 5, 180)
+	const playerWithSprite = initPlayer(sprite, 1, 1, 5, 180)
 	it('should have a sprite anchor', () => {
 		expect(playerWithSprite.sprite.anchor).toBeDefined()
 	})
 	it('should have a move function', () => {
-		expect(playerWithSprite.move(speed)).toBeUndefined()
+		expect(playerWithSpriteMoved.move(speed)).toBeUndefined()
 	})
 	it('should not have default param value', () => {
 		expect(playerWithSprite.x).toEqual(1)
 		expect(playerWithSprite.y).toEqual(1)
 		expect(playerWithSprite.speed).toEqual(5)
-		expect(playerWithSprite.y).toEqual(180)
+		expect(playerWithSprite.dir).toEqual(180)
 	})
 })
